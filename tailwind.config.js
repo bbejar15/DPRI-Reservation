@@ -1,34 +1,21 @@
-const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.vue',
+    ],
+
     theme: {
         extend: {
-            backgroundImage: {
-                'grid-pattern': "linear-gradient(to bottom, theme('colors.neutral.950 / 0%'), theme('colors.neutral.950 / 100%')), url('/images/noise.png')"
-            },
-            colors: {
-                neutral: colors.neutral
-            },
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans]
-            }
-        }
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
-    daisyui: {
-        themes: [
-            {
-                lofi: {
-                    ...require('daisyui/src/theming/themes')['lofi'],
-                    primary: '#2bdcd2',
-                    'primary-content': '#171717',
-                    secondary: '#016968',
-                    info: '#2bdcd2',
-                    'info-content': '#171717',
-                }
-            }
-        ]
-    },
-    plugins: [require('daisyui')]
+
+    plugins: [require('@tailwindcss/forms')],
 };
